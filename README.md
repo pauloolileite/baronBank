@@ -66,8 +66,8 @@ Contribuições são bem-vindas! Para relatar problemas ou sugerir melhorias, ab
 https://github.com/pauloolileite/baronBank
 
 -----------------------
-Autores e Licença
+Autor e Licença
 -----------------------
 Desenvolvido por Paulo Victor Oliveira Leite da Silva.
 
-Aproveite o Baron Bank!
+Aproveite o Banco Barão!

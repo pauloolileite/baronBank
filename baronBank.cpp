@@ -5,7 +5,7 @@
 #include <time.h>
 #include <locale.h>
 
-// Códigos de cor ANSI
+// CÃ³digos de cor ANSI
 #define RESET "\033[0m"
 #define RED "\033[31m"
 #define GREEN "\033[32m"
@@ -34,7 +34,7 @@ typedef struct {
     float saldoTotal;
 } Conta;
 
-// Funções
+// FunÃ§Ãµes
 void menu();
 void infoCliente(Cliente cliente);
 void infoConta(Conta conta);
@@ -57,7 +57,7 @@ static Conta contas[50];
 static int contador_contas = 0;
 
 int main() {
-	setlocale(LC_ALL, "Portuguese");
+    setlocale(LC_ALL, "Portuguese");
     carregarContas();
     menu();
     return 0;
@@ -72,7 +72,7 @@ void menu() {
         printf(BG_WHITE MAGENTA);
         printf("============================================\n");
         printf("================ TERMINAL ==================\n");
-        printf("=============== BANCO BARÃO ================\n");
+        printf("=============== BANCO BARÃƒO ================\n");
         printf("============================================\n");
         printf("================= /\\_/\\ ====================\n");
         printf("================ ( o.o ) ===================\n"); 
@@ -81,11 +81,11 @@ void menu() {
 
         printf(RESET);
 
-        printf(GREEN "\n   ==== Selecione uma opção no menu: ====\n\n" RESET);
+        printf(GREEN "\n   ==== Selecione uma opÃ§Ã£o no menu: ====\n\n" RESET);
         printf(YELLOW "1 - Criar Conta\n" RESET);
         printf(YELLOW "2 - Efetuar Saque\n" RESET);
-        printf(YELLOW "3 - Efetuar Depósito\n" RESET);
-        printf(YELLOW "4 - Efetuar Transferência\n" RESET);
+        printf(YELLOW "3 - Efetuar DepÃ³sito\n" RESET);
+        printf(YELLOW "4 - Efetuar TransferÃªncia\n" RESET);
         printf(YELLOW "5 - Listar Contas\n" RESET);
         printf(YELLOW "6 - Fechar Conta\n" RESET);
         printf(YELLOW "7 - Limpar tela\n" RESET);
@@ -118,11 +118,11 @@ void menu() {
                 break;
             case 8:
                 salvarContas();
-                printf(RED "Até a próxima!\n" RESET);
+                printf(RED "AtÃ© a prÃ³xima!\n" RESET);
                 Sleep(2000);
                 exit(0);
             default:
-                printf(RED "Opção inválida.\n" RESET);
+                printf(RED "OpÃ§Ã£o invÃ¡lida.\n" RESET);
                 Sleep(2000);
                 break;
         }
@@ -194,7 +194,7 @@ void listarContas() {
 }
 
 void infoConta(Conta conta) {
-    printf("Número da conta: %d\n", conta.numero);
+    printf("NÃºmero da conta: %d\n", conta.numero);
     printf("Nome do cliente: %s\n", conta.cliente.nome);
     printf("Email do cliente: %s\n", conta.cliente.email);
     printf("CPF do cliente: %s\n", conta.cliente.cpf);
@@ -218,12 +218,12 @@ Conta* buscarContaPorNumero(int numero) {
 void efetuarSaque() {
     int numero;
     float valor;
-    printf("Digite o número da conta: ");
+    printf("Digite o nÃºmero da conta: ");
     scanf("%d", &numero);
     Conta* conta = buscarContaPorNumero(numero);
 
     if (conta == NULL) {
-        printf(RED "Conta não encontrada.\n" RESET);
+        printf(RED "Conta nÃ£o encontrada.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -235,7 +235,7 @@ void efetuarSaque() {
 
 void sacar(Conta *conta, float valor) {
     if (valor <= 0) {
-        printf(RED "Valor inválido para saque.\n" RESET);
+        printf(RED "Valor invÃ¡lido para saque.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -256,12 +256,12 @@ void sacar(Conta *conta, float valor) {
 void efetuarDeposito() {
     int numero;
     float valor;
-    printf("Digite o número da conta: ");
+    printf("Digite o nÃºmero da conta: ");
     scanf("%d", &numero);
     Conta* conta = buscarContaPorNumero(numero);
 
     if (conta == NULL) {
-        printf(RED "Conta não encontrada.\n" RESET);
+        printf(RED "Conta nÃ£o encontrada.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -273,7 +273,7 @@ void efetuarDeposito() {
 
 void depositar(Conta *conta, float valor) {
     if (valor <= 0) {
-        printf(RED "Valor inválido para depósito.\n" RESET);
+        printf(RED "Valor invÃ¡lido para depÃ³sito.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -281,7 +281,7 @@ void depositar(Conta *conta, float valor) {
     conta->saldo += valor;
     conta->saldoTotal = atualizaSaldoTotal(*conta);
     salvarContas();
-    printf(GREEN "Depósito realizado com sucesso! Novo saldo: %.2f\n" RESET, conta->saldo);
+    printf(GREEN "DepÃ³sito realizado com sucesso! Novo saldo: %.2f\n" RESET, conta->saldo);
     Sleep(2000);
 }
 
@@ -289,22 +289,22 @@ void efetuarTransferencia() {
     int numero_origem, numero_destino;
     float valor;
     
-    printf("Digite o número da conta de origem: ");
+    printf("Digite o nÃºmero da conta de origem: ");
     scanf("%d", &numero_origem);
     Conta* conta_origem = buscarContaPorNumero(numero_origem);
 
     if (conta_origem == NULL) {
-        printf(RED "Conta de origem não encontrada.\n" RESET);
+        printf(RED "Conta de origem nÃ£o encontrada.\n" RESET);
         Sleep(2000);
         return;
     }
 
-    printf("Digite o número da conta de destino: ");
+    printf("Digite o nÃºmero da conta de destino: ");
     scanf("%d", &numero_destino);
     Conta* conta_destino = buscarContaPorNumero(numero_destino);
 
     if (conta_destino == NULL) {
-        printf(RED "Conta de destino não encontrada.\n" RESET);
+        printf(RED "Conta de destino nÃ£o encontrada.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -316,13 +316,13 @@ void efetuarTransferencia() {
 
 void transferir(Conta *conta_origem, Conta *conta_destino, float valor) {
     if (valor <= 0) {
-        printf(RED "Valor inválido para transferência.\n" RESET);
+        printf(RED "Valor invÃ¡lido para transferÃªncia.\n" RESET);
         Sleep(2000);
         return;
     }
 
     if (valor > conta_origem->saldo + conta_origem->limite) {
-        printf(RED "Saldo insuficiente para transferência.\n" RESET);
+        printf(RED "Saldo insuficiente para transferÃªncia.\n" RESET);
         Sleep(2000);
         return;
     }
@@ -333,13 +333,13 @@ void transferir(Conta *conta_origem, Conta *conta_destino, float valor) {
     conta_destino->saldoTotal = atualizaSaldoTotal(*conta_destino);
 
     salvarContas();
-    printf(GREEN "Transferência realizada com sucesso!\n" RESET);
+    printf(GREEN "TransferÃªncia realizada com sucesso!\n" RESET);
     Sleep(2000);
 }
 
 void fecharConta() {
     int numero;
-    printf("Digite o número da conta a ser fechada: ");
+    printf("Digite o nÃºmero da conta a ser fechada: ");
     scanf("%d", &numero);
 
     for (int i = 0; i < contador_contas; i++) {
@@ -355,11 +355,11 @@ void fecharConta() {
         }
     }
 
-    printf(RED "Conta não encontrada.\n" RESET);
+    printf(RED "Conta nÃ£o encontrada.\n" RESET);
     Sleep(2000);
 }
 
-// Funções para salvar e carregar dados do banco
+// FunÃ§Ãµes para salvar e carregar dados do banco
 void salvarContas() {
     FILE *arquivo = fopen("contas.dat", "wb");
     if (arquivo == NULL) {
@@ -374,7 +374,7 @@ void salvarContas() {
 void carregarContas() {
     FILE *arquivo = fopen("contas.dat", "rb");
     if (arquivo == NULL) {
-        return; // Arquivo ainda não existe
+        return; // Arquivo ainda nÃ£o existe
     }
     fread(&contador_contas, sizeof(int), 1, arquivo);
     fread(contas, sizeof(Conta), contador_contas, arquivo);
